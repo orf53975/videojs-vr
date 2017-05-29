@@ -39,7 +39,7 @@ Include the following script imports:
 
 If you want to roll your own VideoJS instance and just want the plugin and supporting libraries (e.g. to use as a Brightcove plugin), import the below instead:
 
-    <script src="./dist/player-no-videojs.full.js</script>
+    <script src="./dist/video-js.min.js</script>
 
 Host all video content on a HTTP Server that supports byte range requests if you want the seek bar to work (e.g. Apache).
 
