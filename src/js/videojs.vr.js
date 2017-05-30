@@ -322,8 +322,8 @@
             }
 
             function isIOS() {
-                return /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
                 console.log("Detected iOS");
+                return /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
 
             };
 
