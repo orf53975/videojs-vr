@@ -29,7 +29,8 @@
     projections = ["360", "360_LR", "360_TB", "360_CUBE", "NONE"],
 
     defaults = {
-        projection: "360_LR"
+        projection: "360_LR",
+        fov: 75
     },
 
     /**
@@ -170,7 +171,7 @@
                 camera,
                 renderedCanvas;
 
-            camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+            camera = new THREE.PerspectiveCamera( settings.fov, window.innerWidth / window.innerHeight, 1, 1000 );
 
             cameraVector = new THREE.Vector3(); // Store vector representing the direction in which the camera is looking, in world space.
 
