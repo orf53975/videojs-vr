@@ -328,6 +328,7 @@
             };
 
             function isSafari() {
+                console.log("Detected Safari");
                 return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
                 //return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
             };
