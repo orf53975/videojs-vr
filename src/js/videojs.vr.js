@@ -171,7 +171,7 @@
                 camera,
                 renderedCanvas;
 
-            camera = new THREE.PerspectiveCamera( settings.fov, videoEl.offsetWidth / videoEl.offsetHeight, 1, 1000 );
+            camera = new THREE.PerspectiveCamera( settings.fov, window.innerWidth / window.innerHeight, 1, 1000 );
 
             cameraVector = new THREE.Vector3(); // Store vector representing the direction in which the camera is looking, in world space.
 
@@ -260,9 +260,9 @@
                 antialias: true
             });
 
-            renderer.setSize(videoEl.offsetWidth, videoEl.offsetHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
             effect = new THREE.VREffect(renderer);
-            effect.setSize(videoEl.offsetWidth, videoEl.offsetHeight);
+            effect.setSize(window.innerWidth, window.innerHeight);
 
             var vrDisplay = null;
             var frameData = null;
@@ -282,8 +282,8 @@
             // Handle window resizes
             function onWindowResize() {
                 //if (window.orientation == undefined) {
-                    effect.setSize(renderedCanvas.offsetWidth, renderedCanvas.offsetHeight);
-                    camera.aspect = renderedCanvas.offsetWidth / renderedCanvas.offsetHeight;
+                    effect.setSize(window.innerWidth, window.innerHeight);
+                    camera.aspect = window.innerWidth / window.innerHeight;
                     camera.updateProjectionMatrix();
                 //}
             }
