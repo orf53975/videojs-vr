@@ -5,6 +5,4 @@ global.WebVRConfig = require('./webvr.config.js');
 var WebVrPolyfill = require('webvr-polyfill');
 var WebVRManager = require('webvr-boilerplate');
 window.WebVRManager = WebVRManager;
-require('./VRController.js');
-require('./datguivr.js');
 require('./videojs.vr.js');
