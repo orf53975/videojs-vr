@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2014 Sean Lawrence
  * Copyright (c) 2015 James Broberg
- * Copyright (c) 2016 Brightcove Inc., HapYak Inc., MetaCDN Pty. Ltd.
+ * Copyright (c) 2016-2017 Brightcove Inc., HapYak Inc., MetaCDN Pty. Ltd.
  * Licensed under the MIT license.
  */
 (function(vjs) {
@@ -206,6 +206,7 @@
                 videoTexture.format = THREE.RGBFormat;
             }
 
+            // Safari + iOS + HLS
             if (videoTexture.format === THREE.RGBAFormat && videoTexture.flipY === false) {
                 movieMaterial = new THREE.ShaderMaterial({
                     uniforms: {
@@ -226,6 +227,8 @@
                         "}"
                     ].join("\n")
                 });
+            
+            // Safari + HLS (macOS)
             } else if (videoTexture.format === THREE.RGBFormat && videoTexture.flipY === false) {
                  movieMaterial = new THREE.ShaderMaterial({
                     uniforms: {
@@ -247,12 +250,12 @@
                     ].join("\n")
                 });
             } else {
-                movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.DoubleSide } );
+                movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.FrontSide } );
             }
 
             changeProjection(current_proj);
             camera.position.set(0,0,0);
-
+            
             renderer = new THREE.WebGLRenderer({
                 devicePixelRatio: window.devicePixelRatio,
                 alpha: false,
@@ -339,8 +342,8 @@
                 var currentType = player.currentType();
 
                 if (currentType == "application/x-mpegURL") {
-                    result = true;
                     console.log("Detected HLS Stream");
+                    result = true;
                 }
 
                 return result;
@@ -380,12 +383,14 @@
                         videoTexture.needsUpdate = true;
                     }
                 }
-
+                
+                var isPresenting = vrDisplay && vrDisplay.isPresenting;
+                
                 controls3d.update();
                 manager.render( scene, camera );
 
-                if (vrDisplay) {
-                    vrDisplay.requestAnimationFrame(animate);
+                if (isPresenting) {
+                    vrDisplay.requestAnimationFrame(animate);                    
 
                     // Grab all gamepads
                     var gamepads = navigator.getGamepads();
@@ -405,11 +410,7 @@
                             }
                         }
                     }
-                    //vrDisplay.getFrameData(frameData);
 
-                    //if (vrDisplay.isPresenting) {
-                    //   vrDisplay.submitFrame();
-                    //}
                 }  else {
                     window.requestAnimationFrame(animate);
                 }
@@ -448,8 +449,6 @@
             };
         }
         initScene();
-
-
 
      /**
       * Add the menu options

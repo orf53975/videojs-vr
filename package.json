@@ -1,6 +1,6 @@
 {
   "name": "videojs-vr",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "author": {
     "name": "James Broberg",
     "email": "james.broberg@metacdn.com"
@@ -32,23 +32,26 @@
     "clean": "rm -rf dist & rm -rf node_modules"
   },
   "dependencies": {
-    "video.js": "^5.11.9",
-    "three": "0.83.0",
-    "webvr-boilerplate": "MetaCDN/webvr-boilerplate",
+    "video.js": "^5.20.1",
+    "three": "0.84.0",
     "webvr-polyfill": "0.9.23",
+    "webvr-boilerplate": "MetaCDN/webvr-boilerplate",
     "dashjs": "^2.2.0",
     "videojs-contrib-hls": "^4.0.1",
     "videojs-contrib-dash": "^2.5.1",
     "videojs-errors": "^1.1.2"
   },
   "devDependencies": {
-    "browserify": "13.0.0",
+    "babel-cli": "6.24.1",
+    "babel-preset-es2015": "6.24.1",
+    "browserify": "^14.0.0",
     "browserify-css": "0.9.1",
-    "browserify-shim": "3.8.12",
-    "video.js": "^5.11.9",
-    "three": "0.83.0",
-    "webvr-boilerplate": "MetaCDN/webvr-boilerplate",
+    "browserify-shim": "3.8.14",
+    "babelify": "^7.3.0",
+    "video.js": "^5.20.1",
+    "three": "0.84.0",
     "webvr-polyfill": "0.9.23",
+    "webvr-boilerplate": "MetaCDN/webvr-boilerplate",
     "dashjs": "^2.2.0",
     "videojs-contrib-hls": "^4.0.1",
     "videojs-contrib-dash": "^2.5.1",

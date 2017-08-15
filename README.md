@@ -26,7 +26,7 @@ npm run serve
 To test locally, visit localhost:3000/example.html
 [Hosted example](https://videojs-vr.s3.amazonaws.com/latest/example.html)
 
-For an iframe example using the allowvr attribute, visit localhost:3000/iframe.html [Hosted example](https://videojs-vr.s3.amazonaws.com/latest/iframe.html)
+For an iframe example, visit localhost:3000/iframe.html [Hosted example](https://videojs-vr.s3.amazonaws.com/latest/iframe.html)
 
 To test macOS and iOS devices with Safari, you need a local/same domain source file. After running `npm run local-samples`, visit localhost:3000/example-local.html an MP4 sample [Hosted example](https://videojs-vr.s3.amazonaws.com/latest/example-local.html) OR visit localhost:3000/example-local-hls.html for a HLS sample [Hosted example](https://videojs-vr.s3.amazonaws.com/latest/example-local-hls.html)
 
@@ -46,9 +46,9 @@ Host all video content on a HTTP Server that supports byte range requests if you
 ## Oculus Rift and HTC Vive Support
 This plugin leverages the [webvr-boilerplate](https://github.com/borismus/webvr-boilerplate) project (which in turn uses [webvr-polyfill](https://github.com/borismus/webvr-polyfill) and [three.js](https://github.com/mrdoob/three.js)) to create a 'responsive VR' experience across multiple devices.
 
-Oculus Rift and HTC Vive playback requires Firefox Nightly with the WebVR addon, or experimental WebVR-enabled builds of Chromium. Go to [WebVR.info](http://www.webvr.info) for more info.
+Oculus Rift and HTC Vive playback requires Firefox 55+ 64-Bit (recommended), or experimental WebVR-enabled builds of Chromium. Go to [WebVR.info](http://www.webvr.info) for more info.
 
-GearVR playback requires the latest Samsung Internet for Gear VR with WebVR support enabled. Go [here](https://webvr.rocks/samsung_internet) for more info.
+GearVR playback requires the Oculus Browser (recommended), or the latest Samsung Internet for Gear VR with WebVR support enabled. Go [here](https://webvr.rocks/samsung_internet) for more info.
 
 ## Accessing the Camera Position
 The Three.js rotation values are exposed under the property `cameraVector` on the `vr` plugin namespace.
@@ -92,6 +92,7 @@ This work is sponsored by [Brightcove](https://www.brightcove.com), [HapYak](htt
 
 ## Release History
 
+* 0.3.5
 * 0.3.4
 * 0.3.3
 * 0.3.2
