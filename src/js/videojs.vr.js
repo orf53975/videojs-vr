@@ -29,7 +29,7 @@
     projections = ["360", "360_LR", "360_TB", "360_CUBE", "NONE"],
 
     defaults = {
-        projection: "360_LR",
+        projection: "360",
         fov: 75
     },
 
