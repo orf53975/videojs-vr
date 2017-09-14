@@ -80,20 +80,23 @@
                 scene.add(movieScreen);
 
             } else if ((projection === "360_LR") || (projection === "360_TB")) {
-                var geometry = new THREE.SphereGeometry( 256, 32, 32 );
 
                 // Left eye view
-                geometry.scale( - 1, 1, 1 );
+
+                var geometry = new THREE.SphereGeometry( 256, 32, 32 );
                 var uvs = geometry.faceVertexUvs[ 0 ];
+
                 for ( var i = 0; i < uvs.length; i ++ ) {
                     for ( var j = 0; j < 3; j ++ ) {
                         if (projection === "360_LR") {
                             uvs[ i ][ j ].x *= 0.5;
                         } else {
                             uvs[ i ][ j ].y *= 0.5;
+                            uvs[ i ][ j ].y += 0.5;
                         }
                     }
                 }
+                geometry.scale( - 1, 1, 1 );
 
                 movieGeometry = new THREE.BufferGeometry().fromGeometry( geometry );
                 movieScreen = new THREE.Mesh( movieGeometry, movieMaterial );
@@ -102,10 +105,10 @@
                 scene.add( movieScreen );
 
                 // Right eye view
-                var geometry = new THREE.SphereGeometry( 256, 32, 32 );
-                geometry.scale( - 1, 1, 1 );
-                var uvs = geometry.faceVertexUvs[ 0 ];
 
+                var geometry = new THREE.SphereGeometry( 256, 32, 32 );
+
+                var uvs = geometry.faceVertexUvs[ 0 ];
                 for ( var i = 0; i < uvs.length; i ++ ) {
                     for ( var j = 0; j < 3; j ++ ) {
                         if (projection === "360_LR") {
@@ -113,16 +116,17 @@
                             uvs[ i ][ j ].x += 0.5;
                         } else {
                             uvs[ i ][ j ].y *= 0.5;
-                            uvs[ i ][ j ].y += 0.5;
                         }
                     }
                 }
+                geometry.scale( - 1, 1, 1 );
 
                 movieGeometry = new THREE.BufferGeometry().fromGeometry( geometry );
                 movieScreen = new THREE.Mesh( movieGeometry, movieMaterial );
                 movieScreen.rotation.y = - Math.PI / 2;
                 movieScreen.layers.set( 2 ); // display in right eye only
                 scene.add( movieScreen );
+
 
             } else if (projection === "360_CUBE") {
                 // Currently doesn't work - need to figure out order of cube faces
@@ -250,7 +254,7 @@
                     ].join("\n")
                 });
             } else {
-                movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.FrontSide } );
+                movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, overdraw: true, side:THREE.DoubleSide } );
             }
 
             changeProjection(current_proj);
